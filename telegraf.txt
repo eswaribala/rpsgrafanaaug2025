@@ -1,0 +1,2 @@
+kubectl create ns telegraf
+helm install telegraf influxdata/telegraf -n telegraf
