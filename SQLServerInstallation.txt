@@ -6,3 +6,5 @@ kubectl run mssql-client  --rm -it --image=mcr.microsoft.com/mssql-tools  --rest
 sqlcmd -S mssql.default.svc.cluster.local,1403 -U SA -P 'Vignesh@95' -Q "SELECT name FROM sys.databases;"
 #create database
 sqlcmd -S mssql.default.svc.cluster.local,1403 -U SA -P 'Vignesh@95' -Q "create database traderdb;"
+#create table
+sqlcmd -S mssql.default.svc.cluster.local,1403 -U SA -P 'Vignesh@95' -d traderdb -Q "create table trader(id INT primary key, name varchar(100));"
