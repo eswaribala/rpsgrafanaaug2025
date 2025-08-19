@@ -4,3 +4,5 @@ kubectl apply -f sqlserverservice.yml
 kubectl run mssql-client  --rm -it --image=mcr.microsoft.com/mssql-tools  --restart=Never -- /bin/bash
 #you will see # prompt
 sqlcmd -S mssql.default.svc.cluster.local,1403 -U SA -P 'Vignesh@95' -Q "SELECT name FROM sys.databases;"
+#create database
+sqlcmd -S mssql.default.svc.cluster.local,1403 -U SA -P 'Vignesh@95' -Q "create database traderdb;"
