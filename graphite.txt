@@ -8,5 +8,4 @@ helm show values kiwigrid/graphite > values.yml
 
 helm upgrade graphite kiwigrid/graphite -f values.yml
 
-helm install graphite-exporter prometheus-community/prometheus-graphite-exporter -f values.yaml
 
