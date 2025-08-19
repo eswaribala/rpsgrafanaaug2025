@@ -2,7 +2,7 @@
 kubectl create ns influxdbns
 helm install influxdb influxdata/influxdb2 --set adminuser.enabled=true --set adminuser.user=admin --set adminuser.password=admin123 --set adminuser.org=rps --set adminuser.bucket=training --set adminuser.token=mysecret  --set service.type=LoadBalancer  --set service.port=8086 -n influxdbns
 #expose to port no 8086
-kubectl port-forward -n influxdbns svc/influxdb-influxdb2 8086:80
+#kubectl port-forward -n influxdbns svc/influxdb-influxdb2 8086:80
 #get the password using bashscript
 kubectl get secret influxdb-influxdb2-auth -o "jsonpath={.data['admin-password']}" --namespace influxdbns | base64 --decode
 #access db from browser
