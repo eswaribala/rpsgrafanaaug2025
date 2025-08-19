@@ -1,2 +1,2 @@
 Kubectl apply -f sqlserverv1.yaml
-kubectl apply -f sqlservice.yaml
+kubectl apply -f sqlserverservice.yaml
