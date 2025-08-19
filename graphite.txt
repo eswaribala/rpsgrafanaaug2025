@@ -6,4 +6,6 @@ http://localhost:8082
 
 helm show values kiwigrid/graphite > values.yml
 
+helm upgrade graphite kiwigrid/graphite -f values.yml
+
 
