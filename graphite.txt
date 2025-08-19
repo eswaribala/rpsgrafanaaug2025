@@ -1,5 +1,5 @@
 helm repo add kiwigrid https://kiwigrid.github.io
-helm install graphite kiwigrid/graphite
+helm install graphite --set service.type=LoadBalancer kiwigrid/graphite
 kubectl get pods
-kubectl port-forward svc/graphite 8082:80
+
 http://localhost:8082
