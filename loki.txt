@@ -1,4 +1,5 @@
 kubectl create ns logging
+#create folder logconfig 
 helm show values grafana/loki-stack > loki-values.yaml
 loki:
   enabled: true
