@@ -1,0 +1,8 @@
+#install jaeger for call tracing
+#download jaegerkube.zip file and extract it
+#go to folder level
+kubectl apply -f jaeger-all-in-one.yaml
+kubectl get pods
+kubectl get svc jaeger
+kubectl port-forward service/jaeger 16686:16686
+http://localhost:16686
