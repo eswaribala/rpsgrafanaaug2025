@@ -47,6 +47,9 @@ kubectl port-forward service/loki-grafana 3100:80 -n logging
 #open bash script run the following
 kubectl get secret loki-grafana -n logging -o jsonpath="{.data.admin-password}" | base64 --decode
 
+#generate logs
+kubectl apply -f log-generator.yaml
+
 ----optional-----------
 create ns loki
 helm search repo loki
