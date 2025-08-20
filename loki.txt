@@ -1,5 +1,6 @@
 create ns loki
 helm search repo loki
+helm show values grafana/loki-stack > loki-values.yaml
 helm upgrade --install loki grafana/loki -n loki --set deploymentMode=SingleBinary --set read.replicas=0 --set write.replicas=0 --set backend.replicas=0 --set loki.auth_enabled=false --set loki.commonConfig.replication_factor=1 --set loki.storage.type=filesystem --set loki.storage.filesystem.chunks_directory=/var/loki/chunks --set loki.storage.filesystem.rules_directory=/var/loki/rules --set singleBinary.replicas=1 --set singleBinary.image.repository=grafana/loki --set singleBinary.image.tag=3.5.3  --set test.enabled=false --set lokiCanary.enabled=false --set loki.useTestSchema=true
 #incase of image error to find
 kubectl -n loki get pod loki-0 -o jsonpath='{.spec.containers[*].image}{"\n"}{.spec.initContainers[*].image}{"\n"}'
