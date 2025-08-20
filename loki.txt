@@ -43,7 +43,7 @@ grafana:
 helm upgrade --install loki -f loki-values.yaml -n logging --create-namespace grafana/loki-stack
 kubectl get pods -n logging
 kubectl port-forward service/loki-grafana 3100:80
-kubectl get secret loki-grafana -o jsonpath="{.data.admin-password}" | base64 --decode
+kubectl get secret loki-grafana -n logging -o jsonpath="{.data.admin-password}" | base64 --decode
 
 ----optional-----------
 helm upgrade --install loki grafana/loki -n loki --set deploymentMode=SingleBinary --set read.replicas=0 --set write.replicas=0 --set backend.replicas=0 --set loki.auth_enabled=false --set loki.commonConfig.replication_factor=1 --set loki.storage.type=filesystem --set loki.storage.filesystem.chunks_directory=/var/loki/chunks --set loki.storage.filesystem.rules_directory=/var/loki/rules --set singleBinary.replicas=1 --set singleBinary.image.repository=grafana/loki --set singleBinary.image.tag=3.5.3  --set test.enabled=false --set lokiCanary.enabled=false --set loki.useTestSchema=true
