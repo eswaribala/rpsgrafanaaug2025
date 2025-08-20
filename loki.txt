@@ -43,7 +43,7 @@ grafana:
 
 helm upgrade --install loki -f loki-values.yaml -n logging --create-namespace grafana/loki-stack
 kubectl get pods -n logging
-kubectl port-forward service/loki-grafana 3100:80
+kubectl port-forward service/loki-grafana 3100:80 -n logging
 #open bash script run the following
 kubectl get secret loki-grafana -n logging -o jsonpath="{.data.admin-password}" | base64 --decode
 
