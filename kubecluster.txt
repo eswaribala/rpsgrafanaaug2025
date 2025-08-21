@@ -27,6 +27,22 @@ Use the AWS CLI update-kubeconfig command to create or update your kubeconfig fo
 aws eks update-kubeconfig --name <cluster_name>
 aws eks update-kubeconfig --name my-cluster --region us-east-2
 
+ aws sts get-caller-identity
+
+PRINCIPAL_ARN="arn:aws:iam::975050122380:user/eks-admin"
+CLUSTER="ekscluster"
+REGION="us-east-1"
+
+aws eks create-access-entry --cluster-name ekscluster --principal-arn "$PRINCIPAL_ARN" --type STANDARD
+aws eks list-access-entries --cluster-name "$CLUSTER" --region "$REGION"
+aws eks describe-access-entry --cluster-name "$CLUSTER" --region "$REGION" --principal-arn "$PRINCIPAL_ARN"
+kubectl version
+
+ aws eks associate-access-policy --cluster-name "$CLUSTER" --region "$REGION"  --principal-arn "$PRINCIPAL_ARN" --policy-arn arn:aws:eks::aws:cluster-access-policy/AmazonEKSClusterAdminPolicy --access-scope type=cluster
+
+aws eks describe-access-entry --cluster-name "$CLUSTER" --region "$REGION" --principal-arn "$PRINCIPAL_ARN"
+
+kubectl cluster-info
 
 Test your configuration:
 kubectl version
