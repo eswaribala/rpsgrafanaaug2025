@@ -9,8 +9,8 @@ helm show values influxdata/telegraf > values.yaml
 #add output as Prometheus client
 outputs:
     - influxdb_v2:
-        urls: ["http://influxdb-influxdb2.default.svc.cluster.local:80"]  #use influx db dns name
-        token: "g43keiCtnRMWYLR0SFIEZwgwEq2hW4-i8FwS7ksplhP7G2pGgJ3Ej-QdyQepxysw4S42mLNOa_xcdhmMc-YV_g=="
+        urls: ["http://influxdb-influxdb2.default.svc.cluster.local:8086"]  #use influx db dns name
+        token: "anE9Ze4Glp5JxH_tM02hFwJSgRUDDjCr8ayUCPsbzGHurT8k0nfevDIYYnF1rkZR5-CP4Xg5LvvCSlKBUkAjJA=="
         organization: "rps"
         bucket: "training"
     - prometheus_client:
@@ -43,6 +43,7 @@ outputs:
     - diskio: {}
 
     - system: {}
+
 
 helm upgrade telegraf -n telegraf influxdata/telegraf  -f values.yaml
 kubectl port-forward svc/telegraf -n telegraf 9273:9273
